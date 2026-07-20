@@ -57,7 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 $new_filename = uniqid('about_', true) . '.' . $ext;
                 if (move_uploaded_file($file['tmp_name'], $upload_dir . $new_filename)) {
-                    $settings['home_about_image'] = SITE_URL . '/assets/images/home/' . $new_filename;
+                    // Relative path keeps the value portable across environments
+                    $settings['home_about_image'] = 'assets/images/home/' . $new_filename;
                 } else {
                     $flash_message = 'Failed to save uploaded image.';
                     $flash_type = 'error';
@@ -84,7 +85,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 $new_filename = uniqid('hero_', true) . '.' . $ext;
                 if (move_uploaded_file($file['tmp_name'], $upload_dir . $new_filename)) {
-                    $new_url = SITE_URL . '/assets/images/png-design/' . rawurlencode($new_filename);
+                    // Relative path keeps the value portable across environments
+                    $new_url = 'assets/images/png-design/' . rawurlencode($new_filename);
                     // Add the new upload to the front of the chosen slide list
                     $existing = ($settings['home_hero_slides'] ?? '') !== ''
                         ? explode("\n", $settings['home_hero_slides']) : [];

@@ -49,7 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 $new_filename = uniqid('story_', true) . '.' . $ext;
                 if (move_uploaded_file($file['tmp_name'], $upload_dir . $new_filename)) {
-                    $settings['about_story_image'] = SITE_URL . '/assets/images/about/' . $new_filename;
+                    // Relative path keeps the value portable across environments
+                    $settings['about_story_image'] = 'assets/images/about/' . $new_filename;
                 } else {
                     $flash_message = 'Failed to save uploaded image.';
                     $flash_type = 'error';

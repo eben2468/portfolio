@@ -25,7 +25,9 @@ $hero_fields   = heroBackgrounds();
 $hero_defaults = heroBackgroundDefaults();
 $allowed_exts  = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
 $upload_dir    = __DIR__ . '/../assets/images/bg-overlay/';
-$upload_url    = SITE_URL . '/assets/images/bg-overlay/';
+// Store a domain-relative path (not SITE_URL) so the value stays portable
+// across environments (local XAMPP, staging, production).
+$upload_url    = 'assets/images/bg-overlay/';
 
 // ─── Handle submission ───────────────────────────────────────────────
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
