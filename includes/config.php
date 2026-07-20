@@ -60,7 +60,18 @@ if ($db) {
 // ─── Site Constants ─────────────────────────────────────────────────
 define('SITE_NAME', $db_settings['site_name'] ?? 'Nadics Digital Solution');
 define('SITE_TAGLINE', $db_settings['site_tagline'] ?? 'Transforming Ideas Into Digital Reality');
-define('SITE_URL', 'http://localhost/portfolio');
+// Auto-detect the site URL so it works both on local XAMPP and in production
+$__host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+if (strpos($__host, 'localhost') !== false || strpos($__host, '127.0.0.1') !== false) {
+    // Local development (XAMPP) — app lives in the /portfolio subfolder
+    define('SITE_URL', 'http://' . $__host . '/portfolio');
+} else {
+    // Production — app is served from the domain root over HTTPS
+    $__https = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off')
+        || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https')
+        || (($_SERVER['SERVER_PORT'] ?? '') == 443);
+    define('SITE_URL', ($__https ? 'https' : 'http') . '://' . $__host);
+}
 define('SITE_EMAIL', $db_settings['site_email'] ?? 'info@nadicsdigital.com');
 define('SITE_PHONE', $db_settings['site_phone'] ?? '+233 24 000 0000');
 define('SITE_ADDRESS', $db_settings['site_address'] ?? 'Accra, Ghana');
