@@ -11,6 +11,17 @@ ini_set('log_errors', 1);
 
 // ─── Session ────────────────────────────────────────────────────────
 if (session_status() === PHP_SESSION_NONE) {
+    // Only mark the cookie Secure over HTTPS so local XAMPP (plain http) still works
+    $__sessionHttps = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off')
+        || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https')
+        || (($_SERVER['SERVER_PORT'] ?? '') == 443);
+    session_set_cookie_params([
+        'lifetime' => 0,
+        'path'     => '/',
+        'httponly' => true,
+        'secure'   => $__sessionHttps,
+        'samesite' => 'Lax',
+    ]);
     session_start();
 }
 
