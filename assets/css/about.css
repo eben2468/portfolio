@@ -123,7 +123,7 @@
 }
 
 .mvv-card:hover {
-    border-color: rgba(71,23,219,0.3);
+    border-color: rgba(41,98,231,0.3);
     transform: translateY(-4px);
 }
 
@@ -136,7 +136,7 @@
     width: 72px;
     height: 72px;
     border-radius: 50%;
-    background: rgba(71,23,219,0.12);
+    background: rgba(41,98,231,0.12);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -247,7 +247,7 @@
 .timeline-item:hover .timeline-item__content {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
-    border-color: rgba(71,23,219,0.25);
+    border-color: rgba(41,98,231,0.25);
 }
 
 .timeline-item__dot {
@@ -593,7 +593,7 @@
 .acronym-card:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
-    border-color: rgba(71, 23, 219, 0.25);
+    border-color: rgba(41,98,231, 0.25);
 }
 
 .acronym-card:hover::before {

@@ -26,14 +26,14 @@
 .portfolio-filter:hover {
     color: var(--primary);
     border-color: var(--primary);
-    background: rgba(71,23,219,0.05);
+    background: rgba(41,98,231,0.05);
 }
 
 .portfolio-filter.active {
     color: var(--white);
     background: var(--gradient-primary);
     border-color: transparent;
-    box-shadow: 0 4px 15px rgba(71,23,219,0.3);
+    box-shadow: 0 4px 15px rgba(41,98,231,0.3);
 }
 
 
@@ -116,7 +116,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(160deg, rgba(71,23,219,0.35), rgba(13,11,26,0.55));
+    background: linear-gradient(160deg, rgba(41,98,231,0.35), rgba(13,11,26,0.55));
     opacity: 0;
     transition: opacity var(--duration-normal) var(--ease-out);
 }
@@ -225,7 +225,7 @@
     align-items: center;
     justify-content: center;
     color: var(--primary);
-    background: rgba(71,23,219,0.06);
+    background: rgba(41,98,231,0.06);
     border: 1px solid var(--border-light);
     transition: all var(--duration-fast) var(--ease-out);
 }

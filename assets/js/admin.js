@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ['dragenter', 'dragover'].forEach(eventName => {
             imageUploadArea.addEventListener(eventName, () => {
                 imageUploadArea.style.borderColor = 'var(--primary)';
-                imageUploadArea.style.background = 'rgba(71,23,219,0.05)';
+                imageUploadArea.style.background = 'rgba(41,98,231,0.05)';
             }, false);
         });
 

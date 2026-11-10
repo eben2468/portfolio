@@ -114,7 +114,7 @@ function initParticleCanvas() {
 
                 if (dist < connectionDistance) {
                     const opacity = (1 - dist / connectionDistance) * 0.15;
-                    ctx.strokeStyle = `rgba(167, 57, 179, ${opacity})`;
+                    ctx.strokeStyle = `rgba(43,160,246, ${opacity})`;
                     ctx.lineWidth = 0.5;
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
@@ -128,7 +128,7 @@ function initParticleCanvas() {
         particles.forEach(p => {
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(71, 23, 219, ${p.opacity})`;
+            ctx.fillStyle = `rgba(41,98,231, ${p.opacity})`;
             ctx.fill();
 
             // Update position
