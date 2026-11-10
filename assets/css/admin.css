@@ -1391,3 +1391,61 @@ img { max-width: 100%; display: block; }
     display: flex;
     gap: 0.6rem;
 }
+
+/* ─── Session Timeout ────────────────────────────────────────────── */
+.session-warning {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 2000;
+    max-width: 360px;
+    background: var(--admin-card);
+    color: var(--admin-text);
+    border: 1px solid var(--admin-border);
+    border-left: 4px solid var(--warning);
+    border-radius: var(--radius-md, 12px);
+    box-shadow: var(--shadow-lg);
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
+}
+
+.session-warning[hidden] {
+    display: none;
+}
+
+.session-warning p {
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+}
+
+.session-warning__actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+    .session-warning {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        max-width: none;
+    }
+}
+
+.login-notice {
+    background: var(--warning-bg);
+    color: #92400e;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #fde68a;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.login-notice svg {
+    flex-shrink: 0;
+}

@@ -73,6 +73,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h2 class="login-card__title">Welcome Back</h2>
             <p class="login-card__subtitle">Please enter your credentials to login</p>
 
+            <?php if (empty($error) && isset($_GET['expired'])): ?>
+                <div class="login-notice" role="status">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>Your session expired for your security. Please sign in again.</span>
+                </div>
+            <?php endif; ?>
+
             <?php if (!empty($error)): ?>
                 <div class="login-error">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

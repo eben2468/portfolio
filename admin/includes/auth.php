@@ -11,6 +11,14 @@ define('ADMIN_EMAIL', 'admin@nadicsdigital.com');
 define('ADMIN_PASSWORD', '@123NadicsDigital');
 define('ADMIN_URL', SITE_URL . '/admin');
 
+// ─── Session Timeout ────────────────────────────────────────────────
+// Idle timeout: signed out after this many seconds without activity.
+// Kept below PHP's default session.gc_maxlifetime (1440s) so the server
+// never deletes the session file before our own timeout kicks in.
+define('ADMIN_IDLE_TIMEOUT', 20 * 60);
+// Absolute timeout: signed out this long after logging in, even if active.
+define('ADMIN_ABSOLUTE_TIMEOUT', 8 * 60 * 60);
+
 // ─── Auth Functions ─────────────────────────────────────────────────
 
 /**
@@ -21,11 +29,53 @@ function isAdminLoggedIn(): bool {
 }
 
 /**
+ * Sign the admin out if the session has been idle too long or is too old.
+ * Pass $touch = false to check without counting the request as activity.
+ * Returns true when the session was just expired by this check.
+ */
+function enforceAdminSessionTimeout(bool $touch = true): bool {
+    if (!isAdminLoggedIn()) {
+        return false;
+    }
+
+    $now        = time();
+    $lastActive = $_SESSION['admin_last_activity'] ?? $now;
+    $loginTime  = $_SESSION['admin_login_time'] ?? $now;
+
+    if (($now - $lastActive) > ADMIN_IDLE_TIMEOUT || ($now - $loginTime) > ADMIN_ABSOLUTE_TIMEOUT) {
+        if (isset($_SESSION['admin_id'])) {
+            logActivity((int) $_SESSION['admin_id'], 'Session expired');
+        }
+        foreach (['admin_logged_in', 'admin_id', 'admin_name', 'admin_email', 'admin_login_time', 'admin_last_activity'] as $key) {
+            unset($_SESSION[$key]);
+        }
+        session_regenerate_id(true);
+        return true;
+    }
+
+    if ($touch) {
+        $_SESSION['admin_last_activity'] = $now;
+    }
+    return false;
+}
+
+/**
+ * Seconds left before the idle timeout (used by the in-page warning).
+ */
+function adminSessionSecondsLeft(): int {
+    $now  = time();
+    $idle = ADMIN_IDLE_TIMEOUT - ($now - ($_SESSION['admin_last_activity'] ?? $now));
+    $abs  = ADMIN_ABSOLUTE_TIMEOUT - ($now - ($_SESSION['admin_login_time'] ?? $now));
+    return max(0, min($idle, $abs));
+}
+
+/**
  * Require admin login — redirects to login page if not authenticated
  */
 function requireAdmin(): void {
     if (!isAdminLoggedIn()) {
-        header('Location: ' . ADMIN_URL . '/');
+        $query = !empty($GLOBALS['adminSessionExpired']) ? '?expired=1' : '';
+        header('Location: ' . ADMIN_URL . '/' . $query);
         exit;
     }
 }
@@ -72,6 +122,7 @@ function setAdminSession(int $id, string $name, string $email): void {
     $_SESSION['admin_name'] = $name;
     $_SESSION['admin_email'] = $email;
     $_SESSION['admin_login_time'] = time();
+    $_SESSION['admin_last_activity'] = time();
 
     // Regenerate session ID for security
     session_regenerate_id(true);
@@ -182,3 +233,8 @@ function getDashboardStats(): array {
 
     return $stats;
 }
+
+// ─── Enforce timeout on every admin request ────────────────────────
+// Scripts can define ADMIN_SESSION_PASSIVE before including this file to
+// check the session without counting the request as activity.
+$adminSessionExpired = enforceAdminSessionTimeout(!defined('ADMIN_SESSION_PASSIVE'));
