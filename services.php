@@ -156,7 +156,7 @@ include 'includes/header.php';
         <div class="cta-banner__content container reveal">
             <h2 class="cta-banner__title">Need a Custom Solution?</h2>
             <p class="cta-banner__desc">Tell us about your project and get a free consultation from our experts.</p>
-            <a href="<?= SITE_URL ?>/contact.php?type=quote" class="btn btn-outline btn-lg">
+            <a href="<?= SITE_URL ?>/contact?type=quote" class="btn btn-outline btn-lg">
                 Get a Free Quote
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>

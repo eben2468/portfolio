@@ -25,7 +25,7 @@ function isAdminLoggedIn(): bool {
  */
 function requireAdmin(): void {
     if (!isAdminLoggedIn()) {
-        header('Location: ' . ADMIN_URL . '/index.php');
+        header('Location: ' . ADMIN_URL . '/');
         exit;
     }
 }

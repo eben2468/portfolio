@@ -192,7 +192,7 @@ if (!empty($db_projects)) {
                 <h3 class="lightbox__title"></h3>
                 <p class="lightbox__client"></p>
                 <p class="lightbox__desc"></p>
-                <a href="<?= SITE_URL ?>/contact.php?type=quote" class="lightbox__link">
+                <a href="<?= SITE_URL ?>/contact?type=quote" class="lightbox__link">
                     Discuss a Similar Project
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
@@ -206,7 +206,7 @@ if (!empty($db_projects)) {
         <div class="cta-banner__content container reveal">
             <h2 class="cta-banner__title">Have a Project in Mind?</h2>
             <p class="cta-banner__desc">Let's work together to bring your ideas to life. Get in touch to discuss your project requirements.</p>
-            <a href="<?= SITE_URL ?>/contact.php?type=quote" class="btn btn-outline btn-lg">
+            <a href="<?= SITE_URL ?>/contact?type=quote" class="btn btn-outline btn-lg">
                 Start Your Project
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>

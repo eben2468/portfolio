@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $_SESSION['flash_msg'] = 'About page content saved successfully.';
                 $_SESSION['flash_type'] = 'success';
-                header('Location: ' . ADMIN_URL . '/about.php');
+                header('Location: ' . ADMIN_URL . '/about');
                 exit;
             } catch (PDOException $e) {
                 $db->rollBack();
@@ -126,7 +126,7 @@ require_once __DIR__ . '/includes/admin-header.php';
 
 <div class="admin-alert admin-alert--info" style="margin-bottom: 1.5rem;">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-    <span>Edit every text block on the About page here. The <strong>leadership cards</strong> are managed under <a href="<?= ADMIN_URL ?>/team.php">Team</a>. For headings, the “highlighted part” is shown in the gradient colour.</span>
+    <span>Edit every text block on the About page here. The <strong>leadership cards</strong> are managed under <a href="<?= ADMIN_URL ?>/team">Team</a>. For headings, the “highlighted part” is shown in the gradient colour.</span>
 </div>
 
 <form action="" method="POST" enctype="multipart/form-data" class="admin-form">
@@ -355,7 +355,7 @@ require_once __DIR__ . '/includes/admin-header.php';
             <div class="admin-form__group">
                 <label class="admin-form__label">Description</label>
                 <textarea name="settings[about_leadership_desc]" class="admin-form__textarea"><?= hp($current, 'about_leadership_desc') ?></textarea>
-                <span class="admin-form__help">The team member cards are managed under <a href="<?= ADMIN_URL ?>/team.php">Team</a>.</span>
+                <span class="admin-form__help">The team member cards are managed under <a href="<?= ADMIN_URL ?>/team">Team</a>.</span>
             </div>
         </div>
     </div>
@@ -411,7 +411,7 @@ require_once __DIR__ . '/includes/admin-header.php';
 
     <!-- Submit -->
     <div class="admin-form__actions" style="justify-content: flex-end; position: sticky; bottom: 0; background: var(--admin-bg); padding: 1rem 0;">
-        <a href="<?= SITE_URL ?>/about.php" target="_blank" class="admin-btn admin-btn--outline">Preview About Page</a>
+        <a href="<?= SITE_URL ?>/about" target="_blank" class="admin-btn admin-btn--outline">Preview About Page</a>
         <button type="submit" class="admin-btn admin-btn--primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
             Save About Page Content

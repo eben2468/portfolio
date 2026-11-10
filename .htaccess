@@ -1,0 +1,26 @@
+# ─── Clean URLs (hide the .php extension) ─────────────────────────
+# Works both locally (http://localhost/portfolio/...) and at a domain root.
+
+Options -MultiViews
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # 1) Visitors who type or follow an old ".php" link are redirected to the
+    #    clean address. Only GET requests, so form submissions (POST) are never
+    #    redirected and lose their data. The /api/ endpoints are left alone.
+    RewriteCond %{THE_REQUEST} ^GET\s([^\s?]*?/)index\.php[\s?] [NC]
+    RewriteRule ^ %1 [R=301,L,NE]
+
+    RewriteCond %{THE_REQUEST} ^GET\s([^\s?]+)\.php[\s?] [NC]
+    RewriteCond %{REQUEST_URI} !/api/ [NC]
+    RewriteRule ^ %1 [R=301,L,NE]
+
+    # 2) Serve the clean address from the matching .php file behind the scenes,
+    #    e.g. /about  ->  about.php
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.+)$ $1.php [L]
+</IfModule>

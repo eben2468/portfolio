@@ -7,7 +7,7 @@ require_once __DIR__ . '/includes/auth.php';
 
 // If already logged in, redirect to dashboard
 if (isAdminLoggedIn()) {
-    header('Location: ' . ADMIN_URL . '/dashboard.php');
+    header('Location: ' . ADMIN_URL . '/dashboard');
     exit;
 }
 
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (isset($_SESSION['admin_id'])) {
                     logActivity($_SESSION['admin_id'], 'Logged in', 'admins', $_SESSION['admin_id'], 'IP: ' . $_SERVER['REMOTE_ADDR']);
                 }
-                header('Location: ' . ADMIN_URL . '/dashboard.php');
+                header('Location: ' . ADMIN_URL . '/dashboard');
                 exit;
             } else {
                 $error = 'Invalid email address or password.';

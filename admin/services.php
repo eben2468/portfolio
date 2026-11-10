@@ -33,7 +33,7 @@ if ($action === 'edit' && isset($_GET['id'])) {
     if (!$edit_item) {
         $_SESSION['flash_msg'] = 'Service not found.';
         $_SESSION['flash_type'] = 'error';
-        header('Location: ' . ADMIN_URL . '/services.php');
+        header('Location: ' . ADMIN_URL . '/services');
         exit;
     }
 }
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         logActivity($_SESSION['admin_id'], 'Deleted service', 'services', $delete_id, "Title: " . $item['title']);
                         $_SESSION['flash_msg'] = 'Service deleted successfully.';
                         $_SESSION['flash_type'] = 'success';
-                        header('Location: ' . ADMIN_URL . '/services.php');
+                        header('Location: ' . ADMIN_URL . '/services');
                         exit;
                     }
                 } catch (PDOException $e) {
@@ -193,7 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $_SESSION['flash_msg'] = 'Service created successfully.';
                     }
                     $_SESSION['flash_type'] = 'success';
-                    header('Location: ' . ADMIN_URL . '/services.php');
+                    header('Location: ' . ADMIN_URL . '/services');
                     exit;
                 } catch (PDOException $e) {
                     $flash_message = 'Database save error: ' . $e->getMessage();
@@ -230,7 +230,7 @@ require_once __DIR__ . '/includes/admin-header.php';
     <div class="admin-card">
         <div class="admin-card__header">
             <h2 class="admin-card__title">Services Offered</h2>
-            <a href="<?= ADMIN_URL ?>/services.php?action=add" class="admin-btn admin-btn--primary admin-btn--sm">
+            <a href="<?= ADMIN_URL ?>/services?action=add" class="admin-btn admin-btn--primary admin-btn--sm">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 Add New Service
             </a>
@@ -245,7 +245,7 @@ require_once __DIR__ . '/includes/admin-header.php';
                     </svg>
                     <h3 class="admin-empty__title">No Services Found</h3>
                     <p class="admin-empty__desc">Add the services your company offers to display them on the Services page.</p>
-                    <a href="<?= ADMIN_URL ?>/services.php?action=add" class="admin-btn admin-btn--primary" style="margin-top: 1rem;">Add First Service</a>
+                    <a href="<?= ADMIN_URL ?>/services?action=add" class="admin-btn admin-btn--primary" style="margin-top: 1rem;">Add First Service</a>
                 </div>
             <?php else: ?>
                 <div class="table-responsive">
@@ -271,7 +271,7 @@ require_once __DIR__ . '/includes/admin-header.php';
                                             <img src="<?= sanitize($thumb_src) ?>" alt="" style="width: 100%; height: 100%; object-fit: cover;">
                                         </div>
                                         <?php else: ?>
-                                        <div style="width: 44px; height: 44px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; background: var(--admin-bg); color: var(--admin-primary, #6d5efc);">
+                                        <div style="width: 44px; height: 44px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; background: var(--admin-bg); color: var(--admin-primary, #3d8af5);">
                                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><?= $service['icon_svg'] ?></svg>
                                         </div>
                                         <?php endif; ?>
@@ -296,7 +296,7 @@ require_once __DIR__ . '/includes/admin-header.php';
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="<?= ADMIN_URL ?>/services.php?action=edit&id=<?= $service['id'] ?>" class="admin-btn admin-btn--outline admin-btn--sm" title="Edit">
+                                            <a href="<?= ADMIN_URL ?>/services?action=edit&id=<?= $service['id'] ?>" class="admin-btn admin-btn--outline admin-btn--sm" title="Edit">
                                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                                             </a>
                                             <form action="" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this service?');">
@@ -330,7 +330,7 @@ require_once __DIR__ . '/includes/admin-header.php';
     <div class="admin-card" style="max-width: 820px; margin: 0 auto;">
         <div class="admin-card__header">
             <h2 class="admin-card__title"><?= $action === 'add' ? 'Add New Service' : 'Edit Service: ' . sanitize($edit_item['title']) ?></h2>
-            <a href="<?= ADMIN_URL ?>/services.php" class="admin-btn admin-btn--outline admin-btn--sm">Cancel</a>
+            <a href="<?= ADMIN_URL ?>/services" class="admin-btn admin-btn--outline admin-btn--sm">Cancel</a>
         </div>
         <div class="admin-card__body">
             <form action="" method="POST" class="admin-form" enctype="multipart/form-data">
@@ -384,7 +384,7 @@ require_once __DIR__ . '/includes/admin-header.php';
                 <div class="admin-form__group">
                     <label class="admin-form__label">Icon</label>
                     <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                        <div style="flex-shrink: 0; width: 64px; height: 64px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: var(--admin-bg); border: 1px solid var(--admin-border-light); color: var(--admin-primary, #6d5efc);">
+                        <div style="flex-shrink: 0; width: 64px; height: 64px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: var(--admin-bg); border: 1px solid var(--admin-border-light); color: var(--admin-primary, #3d8af5);">
                             <svg id="iconPreview" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><?= $current_icon ?></svg>
                         </div>
                         <div style="flex: 1;">
@@ -451,7 +451,7 @@ require_once __DIR__ . '/includes/admin-header.php';
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
                         Save Service
                     </button>
-                    <a href="<?= ADMIN_URL ?>/services.php" class="admin-btn admin-btn--outline">Cancel</a>
+                    <a href="<?= ADMIN_URL ?>/services" class="admin-btn admin-btn--outline">Cancel</a>
                 </div>
             </form>
         </div>

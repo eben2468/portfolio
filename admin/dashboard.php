@@ -78,7 +78,7 @@ $activities = getRecentActivity(6);
     <div class="admin-card">
         <div class="admin-card__header">
             <h2 class="admin-card__title">Recent Contact Messages</h2>
-            <a href="<?= ADMIN_URL ?>/contacts.php" class="admin-btn admin-btn--outline admin-btn--sm">View All Messages</a>
+            <a href="<?= ADMIN_URL ?>/contacts" class="admin-btn admin-btn--outline admin-btn--sm">View All Messages</a>
         </div>
         <div class="admin-card__body" style="padding: 0;">
             <?php if (empty($stats['recent_contacts'])): ?>
@@ -124,7 +124,7 @@ $activities = getRecentActivity(6);
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="<?= ADMIN_URL ?>/contacts.php?id=<?= $contact['id'] ?>" class="admin-btn admin-btn--outline admin-btn--sm" title="View Message">
+                                            <a href="<?= ADMIN_URL ?>/contacts?id=<?= $contact['id'] ?>" class="admin-btn admin-btn--outline admin-btn--sm" title="View Message">
                                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                                                     <circle cx="12" cy="12" r="3"/>

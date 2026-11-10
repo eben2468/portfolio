@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 $_SESSION['flash_msg'] = 'Settings saved successfully.';
                 $_SESSION['flash_type'] = 'success';
-                header('Location: ' . ADMIN_URL . '/settings.php');
+                header('Location: ' . ADMIN_URL . '/settings');
                 exit;
             } catch (PDOException $e) {
                 $db->rollBack();

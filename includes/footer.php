@@ -46,10 +46,10 @@
                     <h4 class="footer__heading">Quick Links</h4>
                     <ul class="footer__links">
                         <li><a href="<?= SITE_URL ?>/">Home</a></li>
-                        <li><a href="<?= SITE_URL ?>/about.php">About Us</a></li>
-                        <li><a href="<?= SITE_URL ?>/services.php">Services</a></li>
-                        <li><a href="<?= SITE_URL ?>/portfolio.php">Portfolio</a></li>
-                        <li><a href="<?= SITE_URL ?>/contact.php">Contact</a></li>
+                        <li><a href="<?= SITE_URL ?>/about">About Us</a></li>
+                        <li><a href="<?= SITE_URL ?>/services">Services</a></li>
+                        <li><a href="<?= SITE_URL ?>/portfolio">Portfolio</a></li>
+                        <li><a href="<?= SITE_URL ?>/contact">Contact</a></li>
                     </ul>
                 </div>
 
@@ -57,11 +57,11 @@
                 <div class="footer__col">
                     <h4 class="footer__heading">Our Services</h4>
                     <ul class="footer__links">
-                        <li><a href="<?= SITE_URL ?>/services.php#web-dev">Web Development</a></li>
-                        <li><a href="<?= SITE_URL ?>/services.php#graphic-design">Graphic Design</a></li>
-                        <li><a href="<?= SITE_URL ?>/services.php#research">Research Consultation</a></li>
-                        <li><a href="<?= SITE_URL ?>/services.php#voting">Voting &amp; Ticketing</a></li>
-                        <li><a href="<?= SITE_URL ?>/services.php#it-support">IT Support</a></li>
+                        <li><a href="<?= SITE_URL ?>/services#web-dev">Web Development</a></li>
+                        <li><a href="<?= SITE_URL ?>/services#graphic-design">Graphic Design</a></li>
+                        <li><a href="<?= SITE_URL ?>/services#research">Research Consultation</a></li>
+                        <li><a href="<?= SITE_URL ?>/services#voting">Voting &amp; Ticketing</a></li>
+                        <li><a href="<?= SITE_URL ?>/services#it-support">IT Support</a></li>
                     </ul>
                 </div>
 

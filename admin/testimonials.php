@@ -32,7 +32,7 @@ if ($action === 'edit' && isset($_GET['id'])) {
             if (!$edit_testimonial) {
                 $_SESSION['flash_msg'] = 'Testimonial not found.';
                 $_SESSION['flash_type'] = 'error';
-                header('Location: ' . ADMIN_URL . '/testimonials.php');
+                header('Location: ' . ADMIN_URL . '/testimonials');
                 exit;
             }
         } catch (PDOException $e) {
@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     logActivity($_SESSION['admin_id'], 'Deleted testimonial', 'testimonials', $delete_id, "Client: $client");
                     $_SESSION['flash_msg'] = 'Testimonial deleted successfully.';
                     $_SESSION['flash_type'] = 'success';
-                    header('Location: ' . ADMIN_URL . '/testimonials.php');
+                    header('Location: ' . ADMIN_URL . '/testimonials');
                     exit;
                 } catch (PDOException $e) {
                     $flash_message = 'Error deleting testimonial: ' . $e->getMessage();
@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $_SESSION['flash_msg'] = 'Testimonial created successfully.';
                             $_SESSION['flash_type'] = 'success';
                         }
-                        header('Location: ' . ADMIN_URL . '/testimonials.php');
+                        header('Location: ' . ADMIN_URL . '/testimonials');
                         exit;
                     } catch (PDOException $e) {
                         $flash_message = 'Database save error: ' . $e->getMessage();
@@ -184,7 +184,7 @@ require_once __DIR__ . '/includes/admin-header.php';
     <div class="admin-card">
         <div class="admin-card__header">
             <h2 class="admin-card__title">All Testimonials</h2>
-            <a href="<?= ADMIN_URL ?>/testimonials.php?action=add" class="admin-btn admin-btn--primary admin-btn--sm">
+            <a href="<?= ADMIN_URL ?>/testimonials?action=add" class="admin-btn admin-btn--primary admin-btn--sm">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 Add Testimonial
             </a>
@@ -207,7 +207,7 @@ require_once __DIR__ . '/includes/admin-header.php';
                     </svg>
                     <h3 class="admin-empty__title">No Testimonials Found</h3>
                     <p class="admin-empty__desc">Manage and show client testimonials on the home page carousel.</p>
-                    <a href="<?= ADMIN_URL ?>/testimonials.php?action=add" class="admin-btn admin-btn--primary">Add Testimonial</a>
+                    <a href="<?= ADMIN_URL ?>/testimonials?action=add" class="admin-btn admin-btn--primary">Add Testimonial</a>
                 </div>
             <?php else: ?>
                 <div class="table-responsive">
@@ -258,7 +258,7 @@ require_once __DIR__ . '/includes/admin-header.php';
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="<?= ADMIN_URL ?>/testimonials.php?action=edit&id=<?= $t['id'] ?>" class="admin-btn admin-btn--outline admin-btn--sm" title="Edit">
+                                            <a href="<?= ADMIN_URL ?>/testimonials?action=edit&id=<?= $t['id'] ?>" class="admin-btn admin-btn--outline admin-btn--sm" title="Edit">
                                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                                             </a>
                                             
@@ -286,7 +286,7 @@ require_once __DIR__ . '/includes/admin-header.php';
     <div class="admin-card" style="max-width: 800px; margin: 0 auto;">
         <div class="admin-card__header">
             <h2 class="admin-card__title"><?= $action === 'add' ? 'Add New Testimonial' : 'Edit Testimonial: ' . sanitize($edit_testimonial['client_name']) ?></h2>
-            <a href="<?= ADMIN_URL ?>/testimonials.php" class="admin-btn admin-btn--outline admin-btn--sm">Cancel</a>
+            <a href="<?= ADMIN_URL ?>/testimonials" class="admin-btn admin-btn--outline admin-btn--sm">Cancel</a>
         </div>
         <div class="admin-card__body">
             <form action="" method="POST" class="admin-form">
@@ -351,7 +351,7 @@ require_once __DIR__ . '/includes/admin-header.php';
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
                         Save Testimonial
                     </button>
-                    <a href="<?= ADMIN_URL ?>/testimonials.php" class="admin-btn admin-btn--outline">Cancel</a>
+                    <a href="<?= ADMIN_URL ?>/testimonials" class="admin-btn admin-btn--outline">Cancel</a>
                 </div>
             </form>
         </div>

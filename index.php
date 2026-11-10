@@ -177,13 +177,13 @@ if (empty($testimonials)) {
                     <svg class="hero__globe" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <defs>
                             <radialGradient id="globeBody" cx="38%" cy="30%" r="75%">
-                                <stop offset="0%" stop-color="#a394ff"/>
-                                <stop offset="42%" stop-color="#6338d8"/>
-                                <stop offset="100%" stop-color="#230f57"/>
+                                <stop offset="0%" stop-color="#8cc4fb"/>
+                                <stop offset="42%" stop-color="#2f6fe0"/>
+                                <stop offset="100%" stop-color="#0f2a5c"/>
                             </radialGradient>
                             <radialGradient id="globeShade" cx="38%" cy="30%" r="78%">
                                 <stop offset="58%" stop-color="rgba(0,0,0,0)"/>
-                                <stop offset="100%" stop-color="rgba(8,0,26,0.6)"/>
+                                <stop offset="100%" stop-color="rgba(0,8,26,0.6)"/>
                             </radialGradient>
                             <radialGradient id="globeShine" cx="34%" cy="26%" r="32%">
                                 <stop offset="0%" stop-color="rgba(255,255,255,0.6)"/>
@@ -194,7 +194,7 @@ if (empty($testimonials)) {
 
                         <circle cx="100" cy="100" r="90" fill="url(#globeBody)"/>
 
-                        <g clip-path="url(#globeClip)" fill="none" stroke="rgba(200,190,255,0.30)" stroke-width="0.9">
+                        <g clip-path="url(#globeClip)" fill="none" stroke="rgba(190,220,255,0.30)" stroke-width="0.9">
                             <!-- Parallels (latitude) -->
                             <line x1="10" y1="100" x2="190" y2="100"/>
                             <ellipse cx="100" cy="100" rx="90" ry="32"/>
@@ -217,7 +217,7 @@ if (empty($testimonials)) {
 
                         <circle cx="100" cy="100" r="90" fill="url(#globeShade)"/>
                         <ellipse cx="72" cy="64" rx="30" ry="22" fill="url(#globeShine)"/>
-                        <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(200,190,255,0.55)" stroke-width="1"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(190,220,255,0.55)" stroke-width="1"/>
                     </svg>
                     <?php endif; ?>
                     <div class="hero__visual-ring"></div>
@@ -288,7 +288,7 @@ if (empty($testimonials)) {
             </div>
 
             <div class="text-center mt-3xl reveal">
-                <a href="<?= SITE_URL ?>/services.php" class="btn btn-outline--dark btn-lg">
+                <a href="<?= SITE_URL ?>/services" class="btn btn-outline--dark btn-lg">
                     <?= sanitize(homeText('home_services_btn_label')) ?>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
@@ -317,7 +317,7 @@ if (empty($testimonials)) {
                         <?php endforeach; ?>
                     </div>
 
-                    <a href="<?= SITE_URL ?>/about.php" class="btn btn-primary">
+                    <a href="<?= SITE_URL ?>/about" class="btn btn-primary">
                         <?= sanitize(homeText('home_about_btn_label')) ?>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
@@ -386,7 +386,7 @@ if (empty($testimonials)) {
                     $has_url = $purl !== '' && $purl !== '#';
                 ?>
                 <div class="showcase-item reveal">
-                    <a href="<?= SITE_URL ?>/portfolio.php" class="showcase-item__media" aria-label="<?= sanitize($project['title']) ?>">
+                    <a href="<?= SITE_URL ?>/portfolio" class="showcase-item__media" aria-label="<?= sanitize($project['title']) ?>">
                         <img src="<?= $project['image'] ?>" alt="<?= sanitize($project['title']) ?>" class="showcase-item__image" loading="lazy">
                         <span class="showcase-item__badge"><?= sanitize($project['category_name']) ?></span>
                         <span class="showcase-item__veil">
@@ -404,7 +404,7 @@ if (empty($testimonials)) {
                         </p>
                         <?php endif; ?>
                         <div class="showcase-item__footer">
-                            <a href="<?= SITE_URL ?>/portfolio.php" class="showcase-item__cta">
+                            <a href="<?= SITE_URL ?>/portfolio" class="showcase-item__cta">
                                 View Project
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </a>
@@ -420,7 +420,7 @@ if (empty($testimonials)) {
             </div>
 
             <div class="text-center mt-3xl reveal">
-                <a href="<?= SITE_URL ?>/portfolio.php" class="btn btn-outline--dark btn-lg">
+                <a href="<?= SITE_URL ?>/portfolio" class="btn btn-outline--dark btn-lg">
                     View All Projects
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
@@ -472,7 +472,7 @@ if (empty($testimonials)) {
             <h2 class="cta-banner__title"><?= sanitize(homeText('home_cta_title')) ?></h2>
             <p class="cta-banner__desc"><?= sanitize(homeText('home_cta_desc')) ?></p>
             <div class="flex-center gap-md" style="flex-wrap:wrap">
-                <a href="<?= SITE_URL ?>/contact.php?type=quote" class="btn btn-outline btn-lg">
+                <a href="<?= SITE_URL ?>/contact?type=quote" class="btn btn-outline btn-lg">
                     <?= sanitize(homeText('home_cta_btn_label')) ?>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>

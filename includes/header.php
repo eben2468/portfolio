@@ -28,7 +28,8 @@ $page_css   = $page_css   ?? '';
     <meta name="description" content="<?= sanitize($page_desc) ?>">
     <meta name="author" content="Nadics Digital Solution">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="<?= SITE_URL ?>/<?= basename($_SERVER['PHP_SELF']) ?>">
+    <?php $__page = basename($_SERVER['PHP_SELF'], '.php'); ?>
+    <link rel="canonical" href="<?= SITE_URL ?>/<?= $__page === 'index' ? '' : $__page ?>">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -85,14 +86,14 @@ $page_css   = $page_css   ?? '';
             <!-- Desktop Nav Links -->
             <ul class="nav__links" id="navLinks">
                 <li><a href="<?= SITE_URL ?>/" class="nav__link<?= activeClass('index.php') ?>">Home</a></li>
-                <li><a href="<?= SITE_URL ?>/services.php" class="nav__link<?= activeClass('services.php') ?>">Services</a></li>
-                <li><a href="<?= SITE_URL ?>/portfolio.php" class="nav__link<?= activeClass('portfolio.php') ?>">Portfolio</a></li>
-                <li><a href="<?= SITE_URL ?>/about.php" class="nav__link<?= activeClass('about.php') ?>">About</a></li>
-                <li><a href="<?= SITE_URL ?>/contact.php" class="nav__link<?= activeClass('contact.php') ?>">Contact</a></li>
+                <li><a href="<?= SITE_URL ?>/services" class="nav__link<?= activeClass('services.php') ?>">Services</a></li>
+                <li><a href="<?= SITE_URL ?>/portfolio" class="nav__link<?= activeClass('portfolio.php') ?>">Portfolio</a></li>
+                <li><a href="<?= SITE_URL ?>/about" class="nav__link<?= activeClass('about.php') ?>">About</a></li>
+                <li><a href="<?= SITE_URL ?>/contact" class="nav__link<?= activeClass('contact.php') ?>">Contact</a></li>
             </ul>
 
             <!-- CTA Button -->
-            <a href="<?= SITE_URL ?>/contact.php?type=quote" class="btn btn-primary nav__cta">
+            <a href="<?= SITE_URL ?>/contact?type=quote" class="btn btn-primary nav__cta">
                 Get a Quote
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -112,12 +113,12 @@ $page_css   = $page_css   ?? '';
         <div class="mobile-menu__inner">
             <ul class="mobile-menu__links">
                 <li style="--i:0"><a href="<?= SITE_URL ?>/" class="mobile-menu__link<?= activeClass('index.php') ?>">Home</a></li>
-                <li style="--i:1"><a href="<?= SITE_URL ?>/services.php" class="mobile-menu__link<?= activeClass('services.php') ?>">Services</a></li>
-                <li style="--i:2"><a href="<?= SITE_URL ?>/portfolio.php" class="mobile-menu__link<?= activeClass('portfolio.php') ?>">Portfolio</a></li>
-                <li style="--i:3"><a href="<?= SITE_URL ?>/about.php" class="mobile-menu__link<?= activeClass('about.php') ?>">About</a></li>
-                <li style="--i:4"><a href="<?= SITE_URL ?>/contact.php" class="mobile-menu__link<?= activeClass('contact.php') ?>">Contact</a></li>
+                <li style="--i:1"><a href="<?= SITE_URL ?>/services" class="mobile-menu__link<?= activeClass('services.php') ?>">Services</a></li>
+                <li style="--i:2"><a href="<?= SITE_URL ?>/portfolio" class="mobile-menu__link<?= activeClass('portfolio.php') ?>">Portfolio</a></li>
+                <li style="--i:3"><a href="<?= SITE_URL ?>/about" class="mobile-menu__link<?= activeClass('about.php') ?>">About</a></li>
+                <li style="--i:4"><a href="<?= SITE_URL ?>/contact" class="mobile-menu__link<?= activeClass('contact.php') ?>">Contact</a></li>
             </ul>
-            <a href="<?= SITE_URL ?>/contact.php?type=quote" class="btn btn-primary mobile-menu__cta">Get a Quote</a>
+            <a href="<?= SITE_URL ?>/contact?type=quote" class="btn btn-primary mobile-menu__cta">Get a Quote</a>
             <div class="mobile-menu__info">
                 <p><?= SITE_EMAIL ?></p>
                 <p><?= SITE_PHONE ?></p>

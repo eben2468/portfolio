@@ -224,7 +224,7 @@ include 'includes/header.php';
         <div class="cta-banner__content container reveal">
             <h2 class="cta-banner__title"><?= sanitize(aboutText('about_cta_title')) ?></h2>
             <p class="cta-banner__desc"><?= sanitize(aboutText('about_cta_desc')) ?></p>
-            <a href="<?= SITE_URL ?>/contact.php" class="btn btn-outline btn-lg">
+            <a href="<?= SITE_URL ?>/contact" class="btn btn-outline btn-lg">
                 <?= sanitize(aboutText('about_cta_btn_label')) ?>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>

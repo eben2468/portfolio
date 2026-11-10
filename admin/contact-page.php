@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $_SESSION['flash_msg'] = 'Contact page content saved successfully.';
                 $_SESSION['flash_type'] = 'success';
-                header('Location: ' . ADMIN_URL . '/contact-page.php');
+                header('Location: ' . ADMIN_URL . '/contact-page');
                 exit;
             } catch (PDOException $e) {
                 $db->rollBack();
@@ -96,7 +96,7 @@ require_once __DIR__ . '/includes/admin-header.php';
 
 <div class="admin-alert admin-alert--info" style="margin-bottom: 1.5rem;">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-    <span>Edit the text on the Contact page. Several blocks have a <strong>normal</strong> version and a <strong>“Request a Quote”</strong> version (shown when visitors open <em>?type=quote</em>). Your email, phone, address and social links live under <a href="<?= ADMIN_URL ?>/settings.php">Settings</a>.</span>
+    <span>Edit the text on the Contact page. Several blocks have a <strong>normal</strong> version and a <strong>“Request a Quote”</strong> version (shown when visitors open <em>?type=quote</em>). Your email, phone, address and social links live under <a href="<?= ADMIN_URL ?>/settings">Settings</a>.</span>
 </div>
 
 <form action="" method="POST" class="admin-form">
@@ -228,7 +228,7 @@ require_once __DIR__ . '/includes/admin-header.php';
                 <textarea name="settings[contact_hours]" class="admin-form__textarea"><?= cp($current, 'contact_hours') ?></textarea>
                 <span class="admin-form__help">One line per row — each line shows on its own line on the page.</span>
             </div>
-            <span class="admin-form__help">The email, phone and location values, plus the social media links, are managed in <a href="<?= ADMIN_URL ?>/settings.php">Settings</a>.</span>
+            <span class="admin-form__help">The email, phone and location values, plus the social media links, are managed in <a href="<?= ADMIN_URL ?>/settings">Settings</a>.</span>
         </div>
     </div>
 
@@ -256,7 +256,7 @@ require_once __DIR__ . '/includes/admin-header.php';
 
     <!-- Submit -->
     <div class="admin-form__actions" style="justify-content: flex-end; position: sticky; bottom: 0; background: var(--admin-bg); padding: 1rem 0;">
-        <a href="<?= SITE_URL ?>/contact.php" target="_blank" class="admin-btn admin-btn--outline">Preview Contact Page</a>
+        <a href="<?= SITE_URL ?>/contact" target="_blank" class="admin-btn admin-btn--outline">Preview Contact Page</a>
         <button type="submit" class="admin-btn admin-btn--primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
             Save Contact Page Content

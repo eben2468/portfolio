@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                     if (isset($_GET['id']) && (int)$_GET['id'] === $msg_id) {
                         $_SESSION['flash_msg'] = $flash_message;
                         $_SESSION['flash_type'] = $flash_type;
-                        header('Location: ' . ADMIN_URL . '/contacts.php');
+                        header('Location: ' . ADMIN_URL . '/contacts');
                         exit;
                     }
                 } catch (PDOException $e) {
@@ -139,7 +139,7 @@ require_once __DIR__ . '/includes/admin-header.php';
         <div class="admin-card__header">
             <h2 class="admin-card__title">Message from <?= sanitize($contact_detail['full_name']) ?></h2>
             <div class="btn-group">
-                <a href="<?= ADMIN_URL ?>/contacts.php" class="admin-btn admin-btn--outline admin-btn--sm">
+                <a href="<?= ADMIN_URL ?>/contacts" class="admin-btn admin-btn--outline admin-btn--sm">
                     &larr; Back to Messages
                 </a>
                 
@@ -267,7 +267,7 @@ require_once __DIR__ . '/includes/admin-header.php';
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="<?= ADMIN_URL ?>/contacts.php?id=<?= $contact['id'] ?>" class="admin-btn admin-btn--outline admin-btn--sm" title="Read Message">
+                                            <a href="<?= ADMIN_URL ?>/contacts?id=<?= $contact['id'] ?>" class="admin-btn admin-btn--outline admin-btn--sm" title="Read Message">
                                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                                                     <circle cx="12" cy="12" r="3"/>

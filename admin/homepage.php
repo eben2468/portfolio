@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $_SESSION['flash_msg'] = 'Home page content saved successfully.';
                 $_SESSION['flash_type'] = 'success';
-                header('Location: ' . ADMIN_URL . '/homepage.php');
+                header('Location: ' . ADMIN_URL . '/homepage');
                 exit;
             } catch (PDOException $e) {
                 $db->rollBack();
@@ -168,7 +168,7 @@ require_once __DIR__ . '/includes/admin-header.php';
 
 <div class="admin-alert admin-alert--info" style="margin-bottom: 1.5rem;">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-    <span>Edit every text block on the home page here. The <strong>service cards</strong> come from <a href="<?= ADMIN_URL ?>/services.php">Services</a>, <strong>featured projects</strong> from <a href="<?= ADMIN_URL ?>/portfolio.php">Portfolio</a>, <strong>testimonials</strong> from <a href="<?= ADMIN_URL ?>/testimonials.php">Testimonials</a>, and the <strong>stat numbers</strong> from <a href="<?= ADMIN_URL ?>/settings.php">Settings</a>.</span>
+    <span>Edit every text block on the home page here. The <strong>service cards</strong> come from <a href="<?= ADMIN_URL ?>/services">Services</a>, <strong>featured projects</strong> from <a href="<?= ADMIN_URL ?>/portfolio">Portfolio</a>, <strong>testimonials</strong> from <a href="<?= ADMIN_URL ?>/testimonials">Testimonials</a>, and the <strong>stat numbers</strong> from <a href="<?= ADMIN_URL ?>/settings">Settings</a>.</span>
 </div>
 
 <form action="" method="POST" enctype="multipart/form-data" class="admin-form">
@@ -374,7 +374,7 @@ require_once __DIR__ . '/includes/admin-header.php';
             <div class="admin-form__group">
                 <label class="admin-form__label">“View All” Button Label</label>
                 <input type="text" name="settings[home_services_btn_label]" class="admin-form__input" value="<?= hp($current, 'home_services_btn_label') ?>">
-                <span class="admin-form__help">The service cards below the heading are managed under <a href="<?= ADMIN_URL ?>/services.php">Services</a>.</span>
+                <span class="admin-form__help">The service cards below the heading are managed under <a href="<?= ADMIN_URL ?>/services">Services</a>.</span>
             </div>
         </div>
     </div>
@@ -472,7 +472,7 @@ require_once __DIR__ . '/includes/admin-header.php';
                     <input type="text" name="settings[home_stats_label4]" class="admin-form__input" value="<?= hp($current, 'home_stats_label4') ?>">
                 </div>
             </div>
-            <span class="admin-form__help">The numbers themselves are edited in <a href="<?= ADMIN_URL ?>/settings.php">Settings → Statistics Counters</a>.</span>
+            <span class="admin-form__help">The numbers themselves are edited in <a href="<?= ADMIN_URL ?>/settings">Settings → Statistics Counters</a>.</span>
         </div>
     </div>
 
@@ -501,7 +501,7 @@ require_once __DIR__ . '/includes/admin-header.php';
             <div class="admin-form__group">
                 <label class="admin-form__label">“View All” Button Label</label>
                 <input type="text" name="settings[home_portfolio_btn_label]" class="admin-form__input" value="<?= hp($current, 'home_portfolio_btn_label') ?>">
-                <span class="admin-form__help">The projects shown are the featured items from <a href="<?= ADMIN_URL ?>/portfolio.php">Portfolio</a>.</span>
+                <span class="admin-form__help">The projects shown are the featured items from <a href="<?= ADMIN_URL ?>/portfolio">Portfolio</a>.</span>
             </div>
         </div>
     </div>
@@ -527,7 +527,7 @@ require_once __DIR__ . '/includes/admin-header.php';
             <div class="admin-form__group">
                 <label class="admin-form__label">Description</label>
                 <textarea name="settings[home_testimonials_desc]" class="admin-form__textarea"><?= hp($current, 'home_testimonials_desc') ?></textarea>
-                <span class="admin-form__help">The testimonial cards are managed under <a href="<?= ADMIN_URL ?>/testimonials.php">Testimonials</a>.</span>
+                <span class="admin-form__help">The testimonial cards are managed under <a href="<?= ADMIN_URL ?>/testimonials">Testimonials</a>.</span>
             </div>
         </div>
     </div>
@@ -619,7 +619,7 @@ require_once __DIR__ . '/includes/admin-header.php';
     .hero-visual-toggle__option:hover { border-color: var(--primary); }
     .hero-visual-toggle__option.is-active {
         border-color: var(--primary);
-        background: rgba(71,23,219,0.05);
+        background: rgba(41,98,231,0.05);
     }
     .hero-visual-toggle__option input { position: absolute; opacity: 0; pointer-events: none; }
     .hero-visual-toggle__title { font-weight: 600; color: var(--admin-text-light); }
@@ -643,11 +643,11 @@ require_once __DIR__ . '/includes/admin-header.php';
         cursor: pointer;
         overflow: hidden;
         background:
-            linear-gradient(160deg, #1a1130 0%, #231540 60%, #0d0b1a 100%);
+            linear-gradient(160deg, #0f1a30 0%, #12234a 60%, #0d0b1a 100%);
         transition: all var(--duration-fast);
     }
     .hero-design-card:hover { border-color: var(--primary); transform: translateY(-2px); }
-    .hero-design-card.is-active { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(71,23,219,0.25); }
+    .hero-design-card.is-active { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(41,98,231,0.25); }
     .hero-design-card input { position: absolute; opacity: 0; pointer-events: none; }
     .hero-design-card img { max-width: 100%; max-height: 100%; object-fit: contain; }
     .hero-design-card__check {

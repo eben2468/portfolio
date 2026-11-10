@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $_SESSION['flash_msg']  = 'Hero backgrounds saved successfully.';
                 $_SESSION['flash_type'] = 'success';
-                header('Location: ' . ADMIN_URL . '/hero-backgrounds.php');
+                header('Location: ' . ADMIN_URL . '/hero-backgrounds');
                 exit;
             } catch (PDOException $e) {
                 $db->rollBack();
@@ -204,7 +204,7 @@ require_once __DIR__ . '/includes/admin-header.php';
         position: relative;
         height: 130px;
         border-radius: var(--radius-md);
-        background-color: #1a1130;
+        background-color: #0f1a30;
         background-size: cover;
         background-position: center;
         overflow: hidden;
@@ -218,7 +218,7 @@ require_once __DIR__ . '/includes/admin-header.php';
         inset: 0;
         background:
             linear-gradient(180deg, rgba(13,11,26,0.55) 0%, rgba(13,11,26,0.85) 100%),
-            linear-gradient(120deg, rgba(71,23,219,0.45) 0%, rgba(26,17,48,0.30) 45%, rgba(167,57,179,0.35) 100%);
+            linear-gradient(120deg, rgba(41,98,231,0.45) 0%, rgba(15,26,48,0.30) 45%, rgba(43,160,246,0.35) 100%);
     }
     .hero-bg-preview__label {
         position: relative;
